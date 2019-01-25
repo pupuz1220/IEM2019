@@ -1,0 +1,456 @@
+<script type="text/javascript" src="//static.acer.com/up/Resource/Libraries/Acer/4410b/scripts/zcommon.min.js"></script>
+<style>
+.anim-fadein-frombottom {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: anim-fadein-frombottom;
+}
+.newStyle .anim-fadein-fromblack {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: anim-fadein-fromblack;
+}
+        .newStyle .padding-xl {
+            padding: 1rem 4rem;
+        }
+        .bgVideofixed{
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto;
+        position: relative;
+        }
+        .masterVision{
+        height: auto;
+        padding:0;
+        }
+        .play,.vplay{
+        position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 0;
+        }
+        .play li a{
+        border: none;
+        }
+        .play li a:hover{
+        color:white;
+        background:none;
+        }
+        
+        
+        .play .icon{
+        width: 0px;
+            height: 0px;
+            line-height: 1px !important;
+            padding: 0;
+            margin-left: -50px;
+            font-size: 100px;
+        }
+        
+        .vplay .icon {
+                            width: 0px;
+                            height: 0px;
+                            line-height: 1px !important;
+                            padding: 0;
+                            margin-left: -25px;
+                            font-size: 50px;
+                        }
+        @media screen and (max-width: 639px){
+        .play .icon{
+            font-size: 70px;
+        margin-left: -35px;
+        }
+        }
+        .cu-style {
+                                border-top: none !important;
+                                border-bottom: none !important;
+                            }
+        .heading-xl { overflow: visible !important; }
+        .centerImages{ position: relative; }
+                            @media (min-width: 64em) {
+                                .hoverShowInfo .col.c-3 {
+                                    border: 8px black solid;
+                                }
+                            }
+        
+        
+        
+        
+        .video-container{
+            position:relative;
+            /* padding-bottom:56.25%;
+            padding-top:30px;height:0;overflow:hidden; */
+
+             height: 600px;
+        }
+        video {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+        
+        .video-container iframe{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index: 98;
+        }
+.c-playbutton.j-modaltrigger{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px!important;
+    margin-left: -30px!important;	
+}
+        </style>
+<style>
+.newStyle .c-modal {
+	background-color: rgba(0, 0, 0, 0.9);
+	bottom: 0;
+	display: none;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+.newStyle .c-modal.modalopen {
+	display: block;
+	z-index: 9999;
+}
+.newStyle .c-modal .modalcontent {
+	height: 80%;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+}
+.newStyle .c-modal.forvideo .modalcontent {
+	max-height: 720px;
+	max-width: 1280px;
+}
+.newStyle .c-modal.forvideo .modalcontent .c-fluidvideo {
+}
+.newStyle .c-modal .modalclose {
+	background-color: rgba(255,255,255,0.7);
+	border-radius: 50px;
+	box-shadow: 0 0 10px black;
+	color: black;
+	display: block;
+	height: 40px;
+	margin: 0;
+	position: absolute;
+	right: -20px;
+	text-align: center;
+	transition: all 0.2s ease;
+	top: -20px;
+	width: 40px;
+}
+.newStyle .c-modal .modalclose:hover {
+	background-color: rgba(255,255,255,0.85);
+}
+.newStyle .c-modal .modalclose i.icon-ai-close {
+	font-size: 30px;
+	line-height: 40px;
+}
+
+.newStyle .c-fluidvideo {
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.newStyle .c-fluidvideo.contain iframe, 
+.newStyle .c-fluidvideo.contain video {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.newStyle .c-fluidvideo.cover iframe {
+	left: 50%;
+	max-height: 1080px;
+	max-width: 1920px;
+	min-height: 100%;
+	min-width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.newStyle .c-fluidvideo.cover.ar-169 iframe {
+	height: 56.25vw;
+	width: 177.77777778vh;
+}
+.newStyle .c-fluidvideo.cover video {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.newStyle .c-fluidvideo.bg {
+	position: absolute;
+	z-index: -9999;
+}
+
+.newStyle a.c-playbutton {
+	display: inline-block;
+	margin: 0 auto;
+	text-decoration: none;
+}
+.newStyle a.c-playbutton > i {
+	color: white;
+	display: inline-block;
+	font-size: 60px;
+	line-height: 60px;
+	margin: 0 5px;
+	transform: scale(1.06);
+	transition: all 0.15s;
+	vertical-align: bottom;
+}
+.newStyle a.c-playbutton:hover > i {
+	transform: scale(1.18);
+}
+.newStyle a.c-playbutton.dark > i {
+	color: rgba(0, 0, 0, 0.87);
+}
+.newStyle a.c-playbutton.small > i {
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.newStyle .c-partner {
+	padding: 2rem;
+}
+.newStyle .c-partner.align-bottom-right {
+	bottom: 0;
+	display: block;
+	position: absolute;
+	right: 0;
+	text-align: right;
+}
+.newStyle .c-partner .partnerlogo {
+	display: inline;
+}
+.newStyle .c-partner .partnerlogo + .partnermsg {
+	margin-top: 1rem;
+}
+
+@keyframes anim-fadein-frombottom {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 30px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.newStyle .anim-fadein-frombottom {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-name: anim-fadein-frombottom;
+}
+@keyframes anim-fadein-fromblack {
+	from {
+		background-color: black;
+	}
+	to {
+		background-color: transparent;
+	}
+}
+.newStyle .anim-fadein-fromblack {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-name: anim-fadein-fromblack;
+}
+
+.newStyle .mod-banner {
+	overflow: hidden;
+	position: relative;
+}
+.newStyle .mod-banner .bannerimg {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 640px;
+	z-index: -100;
+}
+@media (min-width: 40em) {
+	.newStyle .mod-banner .bannerimg {
+		min-width: 1024px;
+	}
+}
+@media (min-width: 64em) {
+	.newStyle .mod-banner .bannerimg {
+		min-width: 1920px;
+	}
+}
+
+.newStyle .valign-middle-container {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.newStyle .valign-middle-table {
+	display: table;
+	height: 100%;
+}
+.newStyle .valign-middle-cell {
+	display: table-cell;
+	float: none;
+	vertical-align: middle;
+}
+@media (max-width: 39.9999em) {
+	.newStyle .valign-middle-container.for-b-up {
+		position: inherit;
+	}
+}
+.newStyle .chunk-talent {
+	padding-bottom: 450px;
+}
+.newStyle .chunk-talent .talent-name {
+	line-height: 1.2;
+}
+.newStyle .talent-instagram-link {
+	display: inline-block;
+	line-height: 1;
+	margin: 0 8px 0 0;
+	vertical-align: text-top;
+}
+.newStyle .talent-instagram-link > img {
+	height: calc(1.01vw + 1.044rem);
+	width: calc(1.01vw + 1.044rem);
+	transform: scale(1);
+	transition: 0.05s all;
+	vertical-align: text-bottom;
+}
+.newStyle .talent-instagram-link:hover > img {
+	transform: scale(1.06);
+}
+@media (max-width: 20em) {
+	.newStyle .talent-instagram-link > img {
+		height: 1.246rem;
+		width: 1.246rem;
+	}
+}
+@media (max-width: 39.9999em) {
+	.newStyle .chunk-talent .valign-middle-cell {
+		display: block;
+	}
+	.newStyle .chunk-talent .valign-middle-cell h2,
+	.newStyle .chunk-talent .valign-middle-cell p {
+		text-align: center;
+	}
+	.newStyle .chunk-talent .valign-middle-cell .c-playbutton > i {
+		color: rgba(0, 0, 0, 0.4);
+	}
+	.newStyle .chunk-talent .bannerimg {
+		bottom: 0;
+		top: inherit;
+		transform: translate(-50%, 0);
+	}
+}
+@media (min-width: 40em) {
+	.newStyle .chunk-talent {
+		height: 575px;
+		padding-bottom: 0;
+	}
+	.newStyle .chunk-talent h2,
+	.newStyle .chunk-talent p,
+	.newStyle .chunk-talent a {
+		color: white;
+	}
+}
+@media (min-width: 64em) {
+	.newStyle .chunk-talent {
+		height: 800px;
+	}
+}
+@media (min-width: 90em) {
+	.newStyle .talent-instagram-link > img {
+		height: 1.953rem;
+		width: 1.953rem;
+	}
+}
+
+.col.gutter, .row.gutter {
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+.hoverShowInfo
+{
+	border: 8px black solid;
+}
+
+		.pb > i:before{
+			color:#ffffff;
+		}
+		.icon-position {
+            cursor: pointer;
+            position: absolute;
+        }
+        .pb{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+			transform: translate(-50%, -50%);
+        }
+		
+		.spanBold {
+			font-weight: 400;
+        }
+        .newStyle a.pb > i{
+            line-height: 1px;
+            font-size: 60px;
+        }
+        .textalignfixed{
+            padding: 2% 2em;
+            margin-bottom: 10px;
+		}  
+		
+		.contSection .textOverKsp {
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+		}
+		.newStyle {
+			font-family: "TTSquares", "Acer Foco", "Trebuchet MS", Arial, sans-serif;
+		}		
+</style>
+<script type="text/javascript">
+(function($){
+	$(function(){
+		// modal
+		$(".j-modaltrigger").click(function(e){
+			e.preventDefault();
+			$($(this).data("target")).addClass("modalopen").attr("aria-hidden","false");
+		});
+		$(".j-modalclose").click(function(e){
+			e.preventDefault();
+			var theModal = $(this).closest(".j-modal");
+			theModal.find("iframe").attr("src", theModal.find("iframe, source").attr("src"));
+			theModal.removeClass("modalopen").attr("aria-hidden", "true");
+		});
+		$('#modal-herovideo').click(function(e){
+			e.preventDefault();
+			var theModal = $(this).closest(".j-modal");
+			theModal.find("iframe").attr("src", theModal.find("iframe, source").attr("src"));
+			theModal.removeClass("modalopen").attr("aria-hidden", "true");
+		});
+	});
+})(jQuery);
+</script> 
